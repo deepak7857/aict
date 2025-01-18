@@ -1,9 +1,10 @@
+
 import numpy as np  
 import pandas as pd 
 import seaborn as sns 
 import matplotlib.pyplot as plt 
 import plotly.express as px    
-shop = pd.read_csv('shopping_trends_updated.csv')
+shop = pd.read_csv('shopping_trends_updated1.csv')
 shop.shape
 shop.head()
 shop.dtypes
@@ -18,8 +19,8 @@ print()# This will print a blank line
 print(f"The unique values of the 'Size' column are: {shop['Size'].unique()}")
 print()# This will print a blank line
 print(f"The unique values of the 'Subscription Status' column are: {shop['Subscription Status'].unique()}")
-print()# This will print a blank line
-print(f"The unique values of the 'Shipping Type' column are: {shop['Shipping Type'].unique()}")
+# print()# This will print a blank line
+# print(f"The unique values of the 'Shipping Type' column are: {shop['Category'].unique()}")
 print()# This will print a blank line
 print(f"The unique values of the 'Discount Applied' column are: {shop['Discount Applied'].unique()}")
 print()# This will print a blank line
@@ -81,7 +82,7 @@ shop.columns
 shop_group = shop.groupby('Size')['Purchase Amount (USD)'].sum().reset_index()
 fig  = px.bar(shop_group , x = 'Size' , y ='Purchase Amount (USD)'  )
 fig.show()
-shop.groupby('Category')['Shipping Type'].value_counts().sort_values(ascending= False)
+shop.groupby('Category')['Purchase Amount (USD)'].value_counts().sort_values(ascending= False)
 shop['Category'].unique()
 shop.columns
 shop_group = shop.groupby('Discount Applied')['Purchase Amount (USD)'].sum().reset_index()
